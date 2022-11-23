@@ -184,15 +184,16 @@ vis.binds["vis-owlParcel"] = {
             if (byStatus.length > 0) {
 
                 if (data.txtHeader) {
-                    text += '<div class="vis-widget vis-owl-parcel-headline ' + data.class + '"><div class="vis-widget vis-owl-parcel-headline-text ' + data.class + '">' + data.txtHeader + '</div></div>';
+                    text += '<div class="vis-owl-parcel-headline ' + data.class + '"><div class="vis-owl-parcel-headline-text ' + data.class + '">' + data.txtHeader + '</div></div>';
                 }
-                text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
+                text += '<div class="vis-owl-parcel-container ' + data.class + '">';
                 for (x = 0; x < maxEntries; x++) {
-                    let classInDelievery = byStatus[x].delivery_status > 1 ? "-inDelivery" : "";
-                    if (byStatus[x].delivery_status >= 40) { classInDelievery =  "-DeliveryToday"; }
-                    text += '<div class="vis-widget vis-owl-parcel' + classInDelievery + ' ' + data.class + '" style="top: ' + top + 'px;height: ' + parseInt(data.heightParcel) + 'px;">';
+                    let classInDelievery = byStatus[x].delivery_status > 1 ? "inDelivery" : "";
+                    if (byStatus[x].delivery_status >= 40) { classInDelievery =  "DeliveryToday"; }
+                    text += '<div class="vis-owl-parcel ' + classInDelievery + ' ' + data.class + '">';
                     // Bild des Paketdienstes
-                    text += '<div class="vis-widget vis-owl-parcel-source ' + data.class + '">';
+                    text += '<div class="vis-owl-parcel-firstcol">';
+                    text += '<div class="vis-owl-parcel-source ' + data.class + '">';
 
                     switch (byStatus[x].source.toUpperCase()) {
                         case 'AMZ':
@@ -250,16 +251,18 @@ vis.binds["vis-owlParcel"] = {
                     }
 
                     //left += 60;
-                    text += '<div class="vis-widget vis-owl-parcel-id' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
+                    text += '<div class="vis-owl-parcel-id ' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
+
+                    text += '</div>';
                     //left += 200;
-                    text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + cutString(byStatus[x].name, maxCharsName) + '</div>';
+                    text += '<div class="vis-owl-parcel-name ' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
                     //left = 70;
-                    text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + cutString(byStatus[x].status, maxCharsState) + '</div>';
+                    text += '<div class="vis-owl-parcel-status ' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
                     text += '</div>';
                     //left = 10;
                     top += parseInt(data.heightParcel);
                     if (data.separateEntries) {
-                        text += '<div class="vis-widget vis-owl-parcel-sepline ' + data.class + '" style="height: ' + data.separatorHeight + 'px; top: ' + top + 'px;"></div>';
+                        text += '<div class="vis-owl-parcel-sepline ' + data.class + '"></div>';
                         top += parseInt(data.separatorHeight);
                     }
                 }
@@ -268,7 +271,7 @@ vis.binds["vis-owlParcel"] = {
             else {
                 let txtHint = '';
                 if (data['txtNoDelivery'] != undefined) {txtHint == data['txtNoDelivery'];}
-                text = '<div class="vis-widget vis-owl-parcel-noparcel ' + data.class + '">';
+                text = '<div class="vis-owl-parcel-noparcel ' + data.class + '">';
                 //text = '<div>';
                 text += '<img src="' + imgNoDelivery + '">';
                 text += '<div class="vis-owl-parcel-noparcel-text ' + data.class + '">' + data.txtNoDelivery + '</div>';

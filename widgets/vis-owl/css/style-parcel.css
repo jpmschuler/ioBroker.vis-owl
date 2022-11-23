@@ -4,6 +4,9 @@
     position:relative;
     background-color: #222222;
     padding-left: 10px;
+    overflow: auto;
+    width: auto;
+    height: auto;
 }
 
 .vis-owl-parcel-headline {

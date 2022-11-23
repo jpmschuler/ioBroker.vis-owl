@@ -254,10 +254,12 @@ vis.binds["vis-owlParcel"] = {
                     text += '<div class="vis-owl-parcel-id ' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
 
                     text += '</div>';
+                    text += '<div class="vis-owl-parcel-secondcol">';
                     //left += 200;
                     text += '<div class="vis-owl-parcel-name ' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
                     //left = 70;
                     text += '<div class="vis-owl-parcel-status ' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
+                    text += '</div>';
                     text += '</div>';
                     //left = 10;
                     top += parseInt(data.heightParcel);
